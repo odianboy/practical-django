@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробная информация о нвоости</title>
+</head>
+<body>
+<h4>{{ object.content }}</h4>
+<h4>{{ object.date_of_editing }}</h4>
+<h2>Коментарии к данной новости</h2>
+    {% if comments %}
+        {% for comment in comments %}
+            <li>{{ comment.text_comment }}</li>
+        {% endfor %}
+    {% endif %}
+<h2>Создание нового коментария</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form_comment.as_p }}
+    <button type="submit">Создать Комментарий</button>
+</form>
+</body>
+</html>
